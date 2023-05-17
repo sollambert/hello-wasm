@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>hello-wasm example</title>
+</head>
+
+<body>
+    <script type="module">
+        import init, { greet } from "./pkg/hello_wasm.js";
+        init().then(() => {
+            greet("WebAssembly");
+            let start = Date.now();
+            console.group('logs');
+            for (let i = 0; i < 100000; i ++) {
+                console.log(i, "Hello, WebAssembly!")
+            }
+            console.groupEnd('logs');
+            console.group('time');
+            console.log(Date.now() - start);
+        });
+    </script>
+</body>
+
+</html>
